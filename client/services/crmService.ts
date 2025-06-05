@@ -3,7 +3,7 @@ import { CRMEntry, CRMEntryFormData } from '../types';
 // LOCAL_STORAGE_KEY is no longer used
 // import { LOCAL_STORAGE_KEY } from '../constants';
 
-const API_BASE_URL = 'http://localhost:3000'; // Replace with your actual API base URL if different
+const API_BASE_URL = 'https://crm-backend-d8ll.onrender.com'; // Replace with your actual API base URL if different
 
 export const getEntries = async (): Promise<CRMEntry[]> => {
   try {
