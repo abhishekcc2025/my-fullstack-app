@@ -16,7 +16,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 // ✅ Use CORS before routes abhishek
 app.use(cors({
-  origin: 'https://crm-frontend-92qb.onrender.com/', // Your frontend (Vite) port
+  origin: 'https://crm-frontend-92qb.onrender.com', // Your frontend (Vite) port
   credentials: true
 }));
 
