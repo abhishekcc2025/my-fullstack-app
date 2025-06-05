@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+  </body>
+</html> -->
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Entries List</h1>
+  <ul>
+    <% entries.forEach(function(entry) { %>
+      <li><%= entry.name %> - <%= entry.email %> - <%= entry.phone %></li>
+    <% }) %>
+  </ul>
+</body>
+</html> -->
+
+
+
+<%- include('partials/header') %>
+
+<h1 class="mb-4">Customer Entries</h1>
+
+
+<form action="/send-reminders" method="POST" class="mb-4">
+  <button type="submit" class="btn btn-warning">📧 Send Reminder Emails Now</button>
+</form>
+
+<form method="GET" class="mb-4 d-flex">
+  <input type="text" name="search" value="<%= search %>" class="form-control me-2" placeholder="Search by name, email, or company">
+  <button class="btn btn-primary">Search</button>
+</form>
+ <% if (search) { %>
+    <a href="/" class="btn btn-secondary">Clear</a>
+  <% } %>
+<% if (entries.length === 0) { %>
+  <p>No entries found.</p>
+<% } else { %>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Company</th>
+        <th>Description</th>
+        <th>Reminder Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% entries.forEach(entry => { %>
+        <tr>
+          <td><%= entry.name %></td>
+          <td><%= entry.email %></td>
+          <td><%= entry.phone %></td>
+          <td><%= entry.company %></td>
+          <td><%= entry.description %></td>
+          <td><%= entry.reminderDate ? entry.reminderDate.toISOString().split('T')[0] : '' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <nav>
+    <ul class="pagination">
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+          <a class="page-link" href="/?search=<%= search %>&page=<%= i %>"><%= i %></a>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+<% } %>
+
+<%- include('partials/footer') %>

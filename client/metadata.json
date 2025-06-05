@@ -1,0 +1,7 @@
+
+{
+  "name": "Simple CRM (API Version)",
+  "description": "A simple CRM application to manage contacts and reminders. Data is fetched from and stored via a backend API. Requires a separate backend server connected to a MySQL database.",
+  "requestFramePermissions": [],
+  "prompt": "This CRM application frontend now requires a backend server with a MySQL database. \n1. Implement a backend server (e.g., Node.js/Express, Python/Flask) that provides the API endpoints detailed in README.md. \n2. Configure your backend server to connect to your MySQL database. Store database credentials securely in your backend's environment variables (NOT in the frontend code). \n3. Ensure the API endpoints listed in README.md (GET /api/entries, POST /api/entries, PUT /api/entries/:id, DELETE /api/entries/:id) are correctly implemented by your backend. \n4. If your backend API is not hosted at '/api' relative to the frontend, update 'API_BASE_URL' in 'src/services/crmService.ts' to point to your backend's actual base URL. \n5. Start your backend server before running this frontend application."
+}

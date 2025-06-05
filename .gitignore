@@ -1,0 +1,18 @@
+# Ignore Node modules and environment files
+node_modules/
+.env
+.DS_Store
+dist/
+build/
+
+# Ignore log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore local React build
+client/node_modules/
+client/build/
+
+# Ignore backend node_modules
+server/node_modules/

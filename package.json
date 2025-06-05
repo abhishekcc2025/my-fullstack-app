@@ -1,0 +1,8 @@
+{
+  "name": "fullstack-crm-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server/app.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  }
+}
