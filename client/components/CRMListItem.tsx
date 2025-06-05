@@ -12,7 +12,7 @@ interface CRMListItemProps {
 
 const CRMListItem: React.FC<CRMListItemProps> = ({ entry, onEdit, onDelete }) => {
   const isTodayReminder = entry.reminderDate === getTodaysDateISO();
-  const reminderDateObj = new Date(entry.reminderDate + 'T00:00:00'); // Ensure correct date parsing
+  const reminderDateObj = new Date(entry.reminderDate ); // Ensure correct date parsing
   const formattedReminderDate = reminderDateObj.toLocaleDateString(undefined, {
     year: 'numeric', month: 'long', day: 'numeric'
   });
