@@ -1,22 +1,4 @@
-// var express = require('express');
-// var router = express.Router();
-// const db = require('./routes/users');
-// const cors = require('cors');
 
-// /* GET home page. */
-// // router.get('/', function(req, res, next) {
-// //   res.render('index', { title: 'Express' });
-// // });
-
-// // GET all entries
-// router.get('/', (req, res) => {
-//   db.query('SELECT * FROM entries', (err, results) => {
-//     if (err) return res.status(500).send(err);
-//     res.json(results);
-//   });
-// });
-
-// module.exports = router;
 
 
 
@@ -27,30 +9,8 @@ const db = require('../db'); // Import your MySQL connection
 
 const nodemailer = require('nodemailer');
 
-// Allow requests from your frontend (localhost:3000)
-// app.use(cors({
-//   origin: 'http://localhost:3000',
-//   credentials: true
-// }));
 
 
-// app.use(cors({
-//   origin: 'http://localhost:5173', // match your frontend port
-//   credentials: true
-// }));
-
-/* GET home page - list entries */
-// router.get('/', function(req, res, next) {
-//   db.query('SELECT * FROM entries', (err, results) => {
-//     if (err) return next(err); // delegate to error handler
-
-//     // If you want to render with EJS:
-//     res.render('index', { title: 'Entries', entries: results });
-
-//     // Or just send JSON:
-//     // res.json(results);
-//   });
-// });
 
 
 router.get('/', (req, res, next) => {
@@ -99,30 +59,7 @@ router.get('/entries', (req, res) => {
   });
 });
 
-// router.post('/entries', (req, res) => {
-// //   const { name, email, phone } = req.body;
-// const { name, email, phone, company, description, reminderDate } = req.body;
-//   db.query(
-//     'INSERT INTO entries (name, email, phone, company, description, reminderDate) VALUES (?, ?, ?, ?, ?, ?)',
-//     [name, email, phone, company, description, reminderDate],
-//     (err, result) => {
-//       if (err) return res.status(500).send(err);
-//       const insertResult = result as ResultSetHeader;
-//         res.status(201).json({
-//             id: result,
-//             name,
-//             email,
-//             phone,
-//             company,
-//             description,
-//             reminderDate
-//         });
-//     //   const insertResult = result as ResultSetHeader;
-//     //   res.status(201).json({ id: insertResult.insertId, name, email, phone });
-//     //   res.status(201).json({ id: result, name, email, phone });
-//     }
-//   );
-// });
+
 
 
 router.post('/entries', (req, res) => {
@@ -187,10 +124,7 @@ res.status(204).send(); // No Content
 
 
 
-// const express = require('express');
-// const router = express.Router();
-// const db = require('../db'); // Adjust path if needed
-// const nodemailer = require('nodemailer');
+
 
 // Manual trigger for email reminders
 router.post('/send-reminders', async (req, res) => {
@@ -217,10 +151,12 @@ router.post('/send-reminders', async (req, res) => {
 
       for (const entry of results) {
         await transporter.sendMail({
-          from: '"CRM Reminder" <testrahulmail@gmail.com>',
-          to:'abhishek.tripathi@cloudconverge.io,testrahulmail@gmail.com',
-          subject: '⏰ Task Reminder',
-          text: `Hi ${entry.name},\n\nThis is a reminder for your task:\n\n${entry.description}\n\nCompany: ${entry.company}`
+          from: '"Internal email from CRM website" <testrahulmail@gmail.com>',
+          to:'sajiv@cloudconverge.io,ashish.kumar@cloudconverge.io',
+          subject: '⏰ Task Due Today',
+          // text: `Hi ${entry.name},\n\nThis is a reminder for your task:\n\n${entry.description}\n\nCompany: ${entry.company}`
+          text: `Hi team,\n\n Client Name: ${entry.name},\n\n Client's Email: ${entry.email}\n\n Client's Phone: ${entry.phone}\n\n Task Detail: ${entry.description}\n\n Client's Company Name: ${entry.company}`
+
         });
       }
 
