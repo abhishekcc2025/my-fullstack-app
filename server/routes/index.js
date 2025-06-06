@@ -160,7 +160,7 @@ router.post('/send-reminders', async (req, res) => {
         });
       }
 
-      res.send(`${results.length} reminder email(s) sent manually.`);
+      res.send(`${results.length} reminder email(s) sent manually.<a href="/">Go back</a>`);
     }
   );
 });
