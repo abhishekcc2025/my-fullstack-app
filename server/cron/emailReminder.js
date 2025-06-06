@@ -11,11 +11,17 @@ function sendReminders() {
 
     results.forEach(entry => {
       const mailOptions = {
-        from: 'testrahulmail@gmail.com',
+        from: '"Internal email from CRM website" <testrahulmail@gmail.com>',
         // to: entry.email,
-        to: 'abhishek.tripathi@cloudconverge.io, rsingh@cloudconverge.io',
-        subject: 'Reminder: Task Due',
-        text: `Hi ${entry.name},\n\nYour task is due:\n\n${entry.description}\n\nReminder Date: ${entry.reminderDate}\n\nThanks!`
+        // to: 'abhishek.tripathi@cloudconverge.io, rsingh@cloudconverge.io',
+        // subject: 'Reminder: Task Due',
+        // text: `Hi ${entry.name},\n\nYour task is due:\n\n${entry.description}\n\nReminder Date: ${entry.reminderDate}\n\nThanks!`
+
+        from: '"Internal email from CRM website" <testrahulmail@gmail.com>',
+          to:'sajiv@cloudconverge.io,ashish.kumar@cloudconverge.io',
+          subject: '⏰ Task Due Today',
+          // text: `Hi ${entry.name},\n\nThis is a reminder for your task:\n\n${entry.description}\n\nCompany: ${entry.company}`
+          text: `Hi team,\n\n Client Name: ${entry.name},\n\n Client's Email: ${entry.email}\n\n Client's Phone: ${entry.phone}\n\n Task Detail: ${entry.description}\n\n Client's Company Name: ${entry.company}`
       };
 
       transporter.sendMail(mailOptions, (err, info) => {
